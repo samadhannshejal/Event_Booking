@@ -12,6 +12,7 @@ export const RenderEvent = () => {
   });
   //! fetch all event
   const fetch = () => {
+   
     const data = JSON.parse(localStorage.getItem("event") || []);
     setEvents(data);
   };
@@ -20,6 +21,13 @@ export const RenderEvent = () => {
   };
 
   useEffect(() => {
+    const obj= datas.map((item)=>{
+        return {
+            total_seats:100,
+            ...item
+        }
+    })
+     localStorage.setItem('events',JSON.stringify(obj))
     fetch();
   }, []);
 
